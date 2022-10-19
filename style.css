@@ -1,0 +1,47 @@
+* {
+	font-family: sans-serif;
+	color: white;
+	background-color: black;
+}
+
+td {
+	border: 1px solid;
+	padding: 5px;
+	margin: 5px;
+}
+
+button, a {
+	border: 0px;
+	color: white;
+	font-size: 17px;
+	margin-top: 10px;
+	text-decoration: underline;
+}
+
+button:hover, a:hover {
+	color: yellow;
+	border-color: yellow;
+}
+
+footer {
+/*	border: 1px solid; */
+	text-align: center;
+	position: fixed;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+}
+
+.erro {
+	color: red;
+	font-style: italic;
+}
+
+.dinheiro {
+	border: 1px inset #ccc;
+}
+
+.dinheiro input {
+	border: 0;
+}
+

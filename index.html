@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+
+		<title>Banco</title>
+
+		<script src="script.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div>
+			<button id="btn-saldo">Saldo</button>
+			<button id="btn-novo-gasto">Novo Gasto</button>
+			<button id="btn-novo-ganho">Novo Ganho</button>
+		</div>
+
+		<dialog id="dlg-saldo">
+			<table>
+				<tr>
+					<th>Saldo Total</th>
+					<th>Saldo Livre</th>
+					<th>Saldo Reservado</th>
+				</tr>
+				<tr>
+					<td id="saldo-total"></td>
+					<td id="saldo-livre"></td>
+					<td id="saldo-reservado"></td>
+				</tr>
+			</table>
+
+			<button class="btn-fechar" id="btn-fechar-saldo">Fechar</button>
+		</dialog>
+
+		<dialog id="dlg-novo-gasto">
+			<p id="erro-novo-gasto" class="erro"></p>
+
+			<p>Valor:</p>
+			<p class="dinheiro">R$<input type="text" id="valor-novo-gasto" class="dinheiro"></p>
+
+			<div>
+				<button id="btn-concluir-novo-gasto">Concluir</button>
+				<button id="btn-cancelar-novo-gasto">Cancelar</button>
+			</div>
+		</dialog>
+
+		<dialog id="dlg-novo-ganho">
+			<p id="erro-novo-ganho" class="erro"></p>
+
+			<p>Valor:<p>
+			<span class="dinheiro">R$<input type="text" id="valor-novo-ganho" class="dinheiro"></span>
+
+			<p>Guardar:</p>
+			<span class="dinheiro">%<input type="text" id="guardar-novo-ganho" class="dinheiro"></span>
+		
+			<div>
+				<button id="btn-concluir-novo-ganho">Concluir</button>
+				<button id="btn-cancelar-novo-ganho">Cancelar</button>
+			</div>
+		</dialog>
+
+		<footer>
+			<p><a href="https://github.com/jonashpro/">Autor</a>
+			<a href="https://github.com/jonashpro/teste2">Código Fonte</a></p>
+		</footer>
+	</body>
+</html>
+
