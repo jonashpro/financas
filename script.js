@@ -52,16 +52,21 @@ function main() {
 	const erroNovoGanho = document.querySelector('#erro-novo-ganho');
 
 	btnSaldo.onclick = function() {
+		let saldoLivreValor = parseFloat(localStorage.getItem('saldo-livre'));
+		let saldoReservadoValor = parseFloat(localStorage.getItem('saldo-reservado'));
+
+		localStorage.setItem('saldo-total', saldoLivreValor + saldoReservadoValor);
+
 		saldoTotal.innerHTML = retornarDinheiroFormatado(
 			localStorage.getItem('saldo-total')
 		);
 
 		saldoLivre.innerHTML = retornarDinheiroFormatado(
-			localStorage.getItem('saldo-livre')
+			saldoLivreValor
 		);
 
 		saldoReservado.innerHTML = retornarDinheiroFormatado(
-			localStorage.getItem('saldo-reservado')
+			saldoReservadoValor
 		);
 
 		dlgSaldo.showModal();
@@ -96,7 +101,23 @@ function main() {
 			return;
 		}
 
-		console.log(`Valor: ${valor}`);
+		let saldoLivreValor = localStorage.getItem('saldo-livre');
+		let saldoReservadoValor = localStorage.getItem('saldo-reservado');
+		
+		if ((saldoLivreValor - valor) < 0) {
+			localStorage.setItem('saldo-livre', 0);
+			localStorage.setItem(
+				'saldo-reservado',
+				parseFloat(saldoReservadoValor) + parseFloat(saldoLivreValor - valor)
+			);
+		}
+		else {
+			localStorage.setItem(
+				'saldo-livre',
+				saldoLivreValor - valor
+			);
+		}
+
 		btnCancelarNovoGasto.onclick();
 	};
 
@@ -128,7 +149,19 @@ function main() {
 			return;
 		}
 
-		console.log(`Valor: ${valor}\nGuardar: ${guardar}`);
+		let guardarEmDinheiro = (valor * guardar) / 100;
+		valor -= guardarEmDinheiro;
+
+		localStorage.setItem(
+			'saldo-livre',
+			parseFloat(localStorage.getItem('saldo-livre')) + parseFloat(valor)
+		);
+
+		localStorage.setItem(
+			'saldo-reservado',
+			parseFloat(localStorage.getItem('saldo-reservado')) + parseFloat(guardarEmDinheiro)
+		);
+
 		btnCancelarNovoGanho.onclick();
 	};
 }
